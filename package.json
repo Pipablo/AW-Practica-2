@@ -1,0 +1,16 @@
+{
+  "name": "Practica_2",
+  "version": "1.0.0",
+  "keywords": [
+    "util",
+    "functional",
+    "server",
+    "client",
+    "browser"
+  ],
+  "author": "Pablo",
+  "contributors": [],
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
