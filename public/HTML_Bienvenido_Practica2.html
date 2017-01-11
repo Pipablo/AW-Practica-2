@@ -1,11 +1,73 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+	<head>
+		<title>Portal de Cursos</title>
+		<meta charset="UTF-8">
+
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+
+	</head>
+	<body>
+		<div class="menu">
+			<ul class="list-group">
+				<li class="list-group-item"><a href="/home">Portal de cursos</a></li>
+				<li class="list-group-item"><a href="/buscarcursos">Buscar Cursos</a></li>
+			</ul>
+			<button type="button" class="btn btn-primary">Identificarse</button>
+		</div>
+
+		<div class="contenido">
+			<h1>Búsqueda de cursos</h1>
+			<form class="form-inline">
+				<div class="form-group">
+					<label for="nombre">Búsqueda por nombre :</label>
+					<input type="text" class="form-control" id="nombre">
+					<button type="submit" class="btn btn-primary">Buscar</button>
+				</div>
+			</form>
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Lugar</th>
+						<th>Inicio</th>
+						<th>Fin</th>
+						<th>Vacantes</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="danger">
+						<td>John</td>
+						<td>Doe</td>
+						<td>john@example.com</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="warning">
+						<td>Mary</td>
+						<td>Moe</td>
+						<td>mary@example.com</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>July</td>
+						<td>Dooley</td>
+						<td>july@example.com</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			<ul class="pagination">
+				<li><a href=""><<</a></li>
+				<li class="active"><a href="">1</a></li>
+				<li><a href="">2</a></li>
+				<li><a href="">3</a></li>
+				<li><a href="">>></a></li>
+			</ul>
+		</div>
+	</body>
 </html>
