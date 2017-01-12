@@ -1,8 +1,8 @@
 var connection = require("../Conexion/getConexion");
 
-module.exports = buscar;
+module.exports = identificar;
 
-function buscar(partida, numeroCambiosTurno, callback) {
+function identificar(partida, numeroCambiosTurno, callback) {
     var conexion = connection.getConexion();
     if (callback === undefined) {
         callback = function () {};

@@ -2,7 +2,7 @@
 
 module.exports = {
     crear: require("./crear"),
-    identificacion: require("./identificacion"),
+    identificar: require("./identificar"),
     inscribir: require("./inscribir"),
     leer: require("./leer")
 };

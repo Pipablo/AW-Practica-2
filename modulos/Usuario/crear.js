@@ -1,8 +1,8 @@
 var connection = require("../Conexion/getConexion");
 
-module.exports = buscar;
+module.exports = crear;
 
-function buscar(partida, numeroCambiosTurno, callback) {
+function crear(nombre, apellidos, correo, contraseña, sexo, fecha_nacimiento, callback) {
     var conexion = connection.getConexion();
     if (callback === undefined) {
         callback = function () {};
@@ -10,7 +10,9 @@ function buscar(partida, numeroCambiosTurno, callback) {
 
     conexion.connect(function (err) {
         if (!err) {
-            var sql = "";
+            var sql = "insert into usuarios " +
+                    "(`id`, `nombre`, `apellidos`, `correo`, `contraseña`, `sexo`, `fecha_nacimiento`) " +
+                    "VALUES (NULL, '" + nombre + "', '" + apellidos + "', '" + correo + "', '" + contraseña + "', '" + sexo + "', '" + fecha_nacimiento + "');";
             conexion.query(sql, function (err, resultado) {
                 if (!err) {
                     callback(null, resultado);

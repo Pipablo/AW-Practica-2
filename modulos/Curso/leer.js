@@ -2,7 +2,7 @@ var connection = require("../Conexion/getConexion");
 
 module.exports = leer;
 
-function leer(partida, numeroCambiosTurno, callback) {
+function leer(id, callback) {
     var conexion = connection.getConexion();
     if (callback === undefined) {
         callback = function () {};
@@ -10,6 +10,18 @@ function leer(partida, numeroCambiosTurno, callback) {
 
     conexion.connect(function (err) {
         if (!err) {
+            var sql = "select * " +
+                    "from curso " +
+                    "where id = '" + id + "';";
+            conexion.query(sql, function (err, resultado) {
+                if (!err) {
+                    callback(null, resultado);
+                } else {
+                    callback(err);
+                }
+            });
+        } else {
+
         }
     });
-};
+}

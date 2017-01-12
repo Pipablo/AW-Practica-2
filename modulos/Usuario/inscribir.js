@@ -1,8 +1,8 @@
 var connection = require("../Conexion/getConexion");
 
-module.exports = buscar;
+module.exports = inscribir;
 
-function buscar(partida, numeroCambiosTurno, callback) {
+function inscribir(id_curso, id_usuario, callback) {
     var conexion = connection.getConexion();
     if (callback === undefined) {
         callback = function () {};
@@ -10,7 +10,9 @@ function buscar(partida, numeroCambiosTurno, callback) {
 
     conexion.connect(function (err) {
         if (!err) {
-            var sql = "";
+            var sql = "insert into inscritos " +
+                    "('id', 'id_curso', 'id_usuario') " +
+                    "VALUES (NULL, '" + id_curso + "', '" + id_usuario + "'";
             conexion.query(sql, function (err, resultado) {
                 if (!err) {
                     callback(null, resultado);

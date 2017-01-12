@@ -3,7 +3,7 @@ var config = require("../../config.js");
 
 module.exports = crear;
 
-function crear(partida, numeroCambiosTurno, callback) {
+function crear(titulo, descripcion, fecha_inicio, fecha_fin, localidad, direccion, plazas_disponibles, imagen, callback) {
     var conexion = connection.getConexion();
     if (callback === undefined) {
         callback = function () {};
@@ -11,10 +11,19 @@ function crear(partida, numeroCambiosTurno, callback) {
 
     conexion.connect(function (err) {
         if (!err) {
-            sql = "CREATE TABLE `" + config.dbName + "`. " + 
-                  "( `id` INT NOT NULL AUTO_INCREMENT , `id_curso` INT NOT NULL , `dia` INT NOT NULL , `hora_inicio` INT NOT NULL , `hora_fin` INT NOT NULL , PRIMARY KEY (`id`)) " + 
-                  "ENGINE = InnoDB;";
+            var sql = "INSERT INTO `curso` " +
+                    "(`id`, `titulo`, `descripcion`, `fecha_inicio`, `fecha_fin`, `localidad`, `direccion`, `plazas_disponibles`, `imagen`) " +
+                    "VALUES (NULL, '" + titulo + "', '" + descripcion + "', '" + fecha_inicio + "', '" + fecha_fin + "', '" + localidad + "', '" + direccion + "', '" + plazas_disponibles + "', " + imagen + ");";
+            conexion.query(sql, function (err, resultado) {
+                if (!err) {
+                    callback(null, resultado[0].id);
+                } else {
+                    callback(err);
+                }
+            });
+
         }
     });
-};
+}
+;
 
