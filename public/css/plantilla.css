@@ -1,7 +1,28 @@
-.busquedaCurso{
-    
+.pagina{
+	  display: none;
 }
 
-.creacionCurso{
-    
+.escondido {
+   display: none;
 }
+.visible {
+   display:block;
+}
+
+.menu:after {
+  clear: both;
+  display: block;
+  content: "";
+}
+.list-group .identificarse{
+   padding:0px;
+   margin: 0px;
+}
+.list-group-item {
+   float: left;
+}
+.identificarse{
+	float: right;
+}
+
+

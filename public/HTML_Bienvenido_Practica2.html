@@ -3,25 +3,32 @@
 	<head>
 		<title>Portal de Cursos</title>
 		<meta charset="UTF-8">
-                
-                <script src="JQuery/crearCurso.js"></script>
+         
+        <!-- JQuery -->  
+        <script src="JQuery/jquery-3.1.1.min.js"></script>
+        <script src="JQuery/menu.js"></script>
+        <script src="JQuery/crearCurso.js"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/plantilla.css"/>
 
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
 
 	</head>
+
 	<body>
 		<div class="menu">
-			<ul class="list-group">
-				<li class="list-group-item"><a href="/home">Portal de cursos</a></li>
+			<ul class="list-group" id="lista">
+				<li class="list-group-item">Portal de cursos</li>
                                 <li class="list-group-item" id="cc">Crear Curso</li>
                                 <li class="list-group-item" id="bc">Buscar Cursos</li>
 			</ul>
-			<button type="button" class="btn btn-primary">Identificarse</button>
+			<button type="button" class="btn btn-primary identificarse">Identificarse</button>
 		</div>
 
 		<div class="contenido">
-                    <div class="busquedaCurso">
+                    <div class="pagina busquedaCurso">
 			<h1>Búsqueda de cursos</h1>
 			<form class="form-inline">
 				<div class="form-group">
@@ -73,7 +80,7 @@
 			</ul>
                     </div>
                     
-                    <div class="creacionCurso">
+                    <div class="pagina creacionCurso">
                         <p>HOOOOOLAAAAAA</p>
                     </div>
 		</div>
