@@ -2,7 +2,7 @@ var connection = require("../Conexion/getConexion");
 
 module.exports = buscar;
 
-function buscar(partida, numeroCambiosTurno, callback) {
+function buscar(busqueda, callback) {
     var conexion = connection.getConexion();
     if (callback === undefined) {
         callback = function () {};
@@ -10,7 +10,9 @@ function buscar(partida, numeroCambiosTurno, callback) {
 
     conexion.connect(function (err) {
         if (!err) {
-            var sql = "";
+            var sql = "SELECT * " + 
+                    "FROM curso " +
+                    "where titulo LIKE '%" + busqueda + "%'";
             conexion.query(sql, function (err, resultado) {
                 if (!err) {
                     callback(null, resultado);
