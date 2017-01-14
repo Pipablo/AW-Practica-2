@@ -1,5 +1,4 @@
-var connection = require("../Conexion/getConexion");
-
+var connection = require("../Conexion");
 module.exports = inscribir;
 
 function inscribir(id_curso, id_usuario, callback) {

@@ -1,5 +1,4 @@
-var connection = require("../Conexion/getConexion");
-
+var connection = require("../Conexion");
 module.exports = editar;
 
 function editar(id, titulo, descripcion, fecha_inicio, fecha_fin, localidad, direccion, plazas_disponibles, imagen, callback) {

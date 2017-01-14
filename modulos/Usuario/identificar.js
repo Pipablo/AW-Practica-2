@@ -1,4 +1,4 @@
-var connection = require("../Conexion/getConexion");
+var connection = require("../Conexion");
 
 module.exports = identificar;
 

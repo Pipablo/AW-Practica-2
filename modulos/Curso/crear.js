@@ -1,5 +1,5 @@
-var connection = require("../Conexion/getConexion");
-var config = require("../../config.js");
+var connection = require("../Conexion");
+
 
 module.exports = crear;
 
@@ -16,7 +16,7 @@ function crear(titulo, descripcion, fecha_inicio, fecha_fin, localidad, direccio
                     "VALUES (NULL, '" + titulo + "', '" + descripcion + "', '" + fecha_inicio + "', '" + fecha_fin + "', '" + localidad + "', '" + direccion + "', '" + plazas_disponibles + "', " + imagen + ");";
             conexion.query(sql, function (err, resultado) {
                 if (!err) {
-                    callback(null, resultado[0].id);
+                    callback(null, resultado.insertId);
                 } else {
                     callback(err);
                 }

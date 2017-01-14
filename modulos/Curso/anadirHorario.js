@@ -1,4 +1,4 @@
-var connection = require("../Conexion/getConexion");
+var connection = require("../Conexion");
 var config = require("../../config.js");
 
 module.exports = anadirHorario;

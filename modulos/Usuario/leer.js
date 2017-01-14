@@ -1,5 +1,4 @@
-var connection = require("../Conexion/getConexion");
-
+var connection = require("../Conexion");
 module.exports = leer;
 
 function leer(id_usuario, callback) {
