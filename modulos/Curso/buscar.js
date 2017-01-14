@@ -1,4 +1,4 @@
-var connection = require("../Conexion");
+var connection = require("../Conexion/getConexion");
 
 module.exports = buscar;
 
