@@ -2,26 +2,13 @@ $(document).ready(function () {
     $("#CrearCurso").on("click", function () {
 
         var titulo = $("#titulo").val();
-        var descripcion = $("#descripcion").val();
-        var fecha_inicio = $("#fecha_inicio").val();
-        var fecha_fin = $("#fecha_fin").val();
-        var localidad = $("#localidad").val();
-        var direccion = $("#direccion").val();
-        var plazas = $("#plazas").val();
-
 
         $.ajax({
             type: "POST",
-            url: "/crearCurso",
+            url: "/buscarCurso",
             contentType: "application/json",
             data: JSON.stringify({
-                titulo: titulo,
-                descripcion: descripcion,
-                fecha_inicio: fecha_inicio,
-                fecha_fin: fecha_fin,
-                localidad: localidad,
-                direccion: direccion,
-                plazas: plazas
+                titulo: titulo
             }),
 
             success: function (data, textStatus, jqXHR) {
@@ -36,5 +23,3 @@ $(document).ready(function () {
         });
     });
 });
-
-
