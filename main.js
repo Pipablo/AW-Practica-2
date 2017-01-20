@@ -8,14 +8,13 @@ var ficherosEstaticos = path.join(__dirname, "public");
 app.use(express.static(ficherosEstaticos));
 app.use(bodyParser.json());
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 var curso = require("./modulos/Curso");
 
 app.listen(config.port, function () {
     console.log("Servidor iniciado en el puerto " + config.port);
-});
-app.get("/", function (req, resp) {
-    resp.redirect("HTML_Bienvenido_Practica2.html");
 });
 
 app.post("/crearCurso", function (request, response) {
@@ -29,8 +28,7 @@ app.post("/crearCurso", function (request, response) {
     curso.crear(titulo, descripcion, fecha_inicio, fecha_fin, localidad, direccion, plazas, null, function (err, resultado) {
         if (!err) {
             response.status(200);
-            response.json({resultado: resultado});
-            response.end();
+            response.json(resultado);
         } else {
             response.status(400);
             response.end();
@@ -38,14 +36,13 @@ app.post("/crearCurso", function (request, response) {
     });
 });
 
-app.post("/buscarCurso", function (request, response) {
-    var titulo = request.body.titulo;
+app.get("/buscarCurso", function (request, response) {
+    var titulo = request.query.titulo;
     
-    curso.buscar(titulo, function (err, resultado){
+    curso.buscar(titulo, function (err, cursos){
         if(!err){
-             response.status(200);
-            response.json({resultado: resultado});
-            response.end();
+            response.status(200);
+            response.json(cursos);
         } else{
             response.status(400);
             response.end();

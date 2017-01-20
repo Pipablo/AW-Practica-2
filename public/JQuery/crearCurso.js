@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#CrearCurso").on("click", function () {
+    $("#crearCurso").on("click", function () {
 
         var titulo = $("#titulo").val();
         var descripcion = $("#descripcion").val();
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
             success: function (data, textStatus, jqXHR) {
                 $("#mensaje").text(
-                        "Se ha creado el curso " + data.resultado + " correctamente");
+                        "Se ha creado el curso " + data + " correctamente");
             },
 
             error: function (jqXHR, textStatus, errorThrown) {

@@ -1,28 +1,24 @@
-.pagina{
-	  display: none;
-}
-
 .escondido {
-   display: none;
+    display: none;
 }
 .visible {
-   display:block;
+    display:block;
 }
 
 .menu:after {
-  clear: both;
-  display: block;
-  content: "";
+    clear: both;
+    display: block;
+    content: "";
 }
 .list-group .identificarse{
-   padding:0px;
-   margin: 0px;
+    padding:0px;
+    margin: 0px;
 }
 .list-group-item {
-   float: left;
+    float: left;
 }
 .identificarse{
-	float: right;
+    float: right;
 }
 
 

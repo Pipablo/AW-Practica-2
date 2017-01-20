@@ -1,19 +1,22 @@
 $(document).ready(function () {
-    $("#CrearCurso").on("click", function () {
+    $("#buscarCurso").on("click", function () {
 
-        var titulo = $("#titulo").val();
+        var titulo_curso = $("#busquedaTitulo").val();
 
         $.ajax({
-            type: "POST",
+            type: "get",
             url: "/buscarCurso",
-            contentType: "application/json",
-            data: JSON.stringify({
-                titulo: titulo
-            }),
+            data: {
+                titulo: titulo_curso
+            },
 
             success: function (data, textStatus, jqXHR) {
-                $("#mensaje").text(
-                        "Se ha creado el curso " + data.resultado + " correctamente");
+                data.forEach(function (curso) {
+                    $("#tabla_busqueda").append(
+                            $("<tr>").append($("<td>").text(curso.titulo), $("<td>").text(curso.localidad), $("<td>").text(curso.fecha_inicio), $("<td>").text(curso.fecha_fin), $("<td>").text(curso.plazas_disponibles))
+                            );
+                });
+                console.log(data);
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
