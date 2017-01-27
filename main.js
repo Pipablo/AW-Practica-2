@@ -16,6 +16,9 @@ var curso = require("./modulos/Curso");
 app.listen(config.port, function () {
     console.log("Servidor iniciado en el puerto " + config.port);
 });
+app.get("/" ,function (request, response) {
+    response.redirect("index.html");
+});
 
 app.post("/crearCurso", function (request, response) {
     var titulo = request.body.titulo;

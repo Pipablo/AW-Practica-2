@@ -1,28 +1,25 @@
 $(document).ready(function () {
-    $("#buscarCurso").on("click", function () {
-
+    $("#buscarCurso").click(function (){
         var titulo_curso = $("#busquedaTitulo").val();
-
         $.ajax({
-            type: "get",
-            url: "/buscarCurso",
+            type:"GET",
             data: {
                 titulo: titulo_curso
             },
-
-            success: function (data, textStatus, jqXHR) {
-                data.forEach(function (curso) {
-                    $("#tabla_busqueda").append(
-                            $("<tr>").append($("<td>").text(curso.titulo), $("<td>").text(curso.localidad), $("<td>").text(curso.fecha_inicio), $("<td>").text(curso.fecha_fin), $("<td>").text(curso.plazas_disponibles))
-                            );
-                });
-                console.log(data);
+            url:"/buscarCurso",
+            
+            success: function(data, textStatus, jqXHR){
+               data.forEach(function (curso){
+                   $("#tabla_busqueda").append(
+                           $("<tr>").append($("<td>").text(curso.titulo), $("<td>").text(curso.localidad), $("<td>").text(curso.fecha_inicio), $("<td>").text(curso.fecha_fin), $("<td>").text(curso.plazas_disponibles)));
+               }); 
             },
-
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert("Se ha producido un error: " + errorThrown);
+            
+            error: function(jqXHR, textStatus, errorThrown){
+               console.log("Se ha producido un error: " + errorThrown);
             }
-
+               
+            
         });
     });
 });

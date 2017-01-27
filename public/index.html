@@ -14,8 +14,11 @@
         <link rel="stylesheet" href="css/plantilla.css"/>
 
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+            <!-- Latest compiled JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
 
     <body>
@@ -29,7 +32,7 @@
         </div>
 
         <div class="contenido">
-            <div class="pagina busquedaCurso">
+            <div class="pagina busquedaCurso escondido">
                 <h1>Búsqueda de cursos</h1>
                 <form class="form-inline">
                     <div class="form-group">
@@ -37,9 +40,9 @@
                         <div class="input-group">
                             <input type="text" class="form-control" id="busquedaTitulo">
                             <div class="input-group-btn">
-                                <button class="btn btn-primary" id="buscarCurso">
+                                <div class="btn btn-primary" id="buscarCurso">
                                     <i class="glyphicon glyphicon-search"></i> Buscar
-                                </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -67,7 +70,7 @@
                 </ul>
             </div>
 
-            <div class="pagina creacionCurso">
+            <div class="pagina creacionCurso escondido">
                 <h1>Creación de un curso</h1>
                 <form class="form-horizontal">
                     <div class="form-group">
@@ -168,7 +171,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button class="btn btn-primary" id="crearCurso">Enviar</button>
+                            <div class="btn btn-primary" id="crearCurso">Enviar</div>
                         </div>
                     </div>
                 </form>

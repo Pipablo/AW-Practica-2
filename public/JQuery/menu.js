@@ -5,9 +5,7 @@ $(document).ready(function () {
     $("#lista #cc").click(function () {
         renderCrearCurso()
     });
-    $("#buscarCurso").on("click", function () {
-        renderBusquedaCurso()
-    });
+    
 });
 
 function renderCrearCurso() {
