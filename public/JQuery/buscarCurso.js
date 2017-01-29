@@ -11,7 +11,13 @@ $(document).ready(function () {
             success: function(data, textStatus, jqXHR){
                data.forEach(function (curso){
                    $("#tabla_busqueda").append(
-                           $("<tr>").append($("<td>").text(curso.titulo), $("<td>").text(curso.localidad), $("<td>").text(curso.fecha_inicio), $("<td>").text(curso.fecha_fin), $("<td>").text(curso.plazas_disponibles)));
+                           
+                             $("<tr class = leerCurso  data-id="+ curso.id +" data-toggle=modal data-target=#infoCurso>").append(
+                             $("<td>").text(curso.titulo),
+                             $("<td>").text(curso.localidad),
+                             $("<td>").text(curso.fecha_inicio),
+                             $("<td>").text(curso.fecha_fin),
+                             $("<td>").text(curso.plazas_disponibles)));
                }); 
             },
             

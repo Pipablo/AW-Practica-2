@@ -10,10 +10,11 @@ function buscar(busqueda, callback) {
 
     conexion.connect(function (err) {
         if (!err) {
-            var sql = "SELECT * " + 
+            busqueda = "%" + busqueda + "%";
+            var sql = "SELECT * " +
                     "FROM curso " +
-                    "where titulo LIKE '%" + busqueda + "%'";
-            conexion.query(sql, function (err, resultado) {
+                    "where curso.titulo LIKE ?;";
+            conexion.query(sql, [busqueda], function (err, resultado) {
                 if (!err) {
                     callback(null, resultado);
                 } else {
@@ -21,7 +22,7 @@ function buscar(busqueda, callback) {
                 }
             });
         } else {
-
+            callback(err);
         }
     });
 }

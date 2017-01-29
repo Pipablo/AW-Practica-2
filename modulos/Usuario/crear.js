@@ -12,8 +12,8 @@ function crear(nombre, apellidos, correo, contraseña, sexo, fecha_nacimiento, c
         if (!err) {
             var sql = "insert into usuarios " +
                     "(`id`, `nombre`, `apellidos`, `correo`, `contraseña`, `sexo`, `fecha_nacimiento`) " +
-                    "VALUES (NULL, '" + nombre + "', '" + apellidos + "', '" + correo + "', '" + contraseña + "', '" + sexo + "', '" + fecha_nacimiento + "');";
-            conexion.query(sql, function (err, resultado) {
+                    "VALUES (NULL, ?, ?, ?, ?, ?, ?);";
+            conexion.query(sql, [nombre, apellidos, correo, contraseña, sexo, fecha_nacimiento], function (err, resultado) {
                 if (!err) {
                     callback(null, resultado);
                 } else {

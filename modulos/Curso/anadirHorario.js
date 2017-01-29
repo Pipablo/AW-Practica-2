@@ -13,23 +13,23 @@ function anadirHorario(nombre, dia, hora_inicio, hora_fin, callback) {
         if (!err) {
             var sql = "SELECT *" +
                     "FROM information_schema.tables " +
-                    "WHERE table_schema = ' " + config.dbName + "' " +
-                    "AND table_name = '" + nombre + "' " +
+                    "WHERE table_schema = ? " +
+                    "AND table_name = ? " +
                     "LIMIT 1;";
-            conexion.query(sql, function () {
+            conexion.query(sql, [config.dbName, nombre], function () {
 
                 if (err) {
-                    sql = "CREATE TABLE `" + config.dbName + "`.horarios_'" + nombre + "' " +
+                    sql = "CREATE TABLE ?.horarios_? " +
                             "(`id` INT NOT NULL AUTO_INCREMENT , `id_curso` INT NOT NULL , `dia` INT NOT NULL , `hora_inicio` INT NOT NULL , `hora_fin` INT NOT NULL , PRIMARY KEY (`id`)) " +
                             "ENGINE = InnoDB;";
 
-                    conexion.query(sql, function (err, resultado) {
+                    conexion.query(sql, [config.dbName, nombre], function (err, resultado) {
                         if (!err) {
-                            sql = "insert into horarios_'" + nombre + "' " +
+                            sql = "insert into horarios_? " +
                                     "VALUES(id, dia, hora_inicio, hora_fin) " +
-                                    "(NULL, '" + dia + "', '" + hora_inicio + "', '" + hora_fin + "';";
+                                    "(NULL, ?, ?, ?;";
 
-                            conexion.query(sql, function (err, resultado) {
+                            conexion.query(sql, [nombre, dia, hora_inicio, hora_fin], function (err, resultado) {
                                 if (!err) {
                                     callback(null, resultado);
                                 } else {
@@ -41,11 +41,11 @@ function anadirHorario(nombre, dia, hora_inicio, hora_fin, callback) {
                         }
                     });
                 } else {
-                    sql = "insert into horarios_'" + nombre + "' " +
+                    sql = "insert into horarios_? " +
                             "VALUES(id, dia, hora_inicio, hora_fin) " +
-                            "(NULL, '" + dia + "', '" + hora_inicio + "', '" + hora_fin + "';";
+                            "(NULL, ?, ?, ?;";
 
-                    conexion.query(sql, function (err, resultado) {
+                    conexion.query(sql, [nombre, dia, hora_inicio, hora_fin], function (err, resultado) {
                         if (!err) {
                             callback(null, resultado);
                         } else {

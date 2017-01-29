@@ -16,8 +16,8 @@ function leerDatosCurso(id, callback) {
         if (!err) {
             var sql = "select * " +
                     "from curso " +
-                    "where id = '" + id + "';";
-            conexion.query(sql, function (err, resultado) {
+                    "where id = ?;";
+            conexion.query(sql, [id], function (err, resultado) {
                 if (!err) {
                     callback(null, resultado);
                 } else {
@@ -39,8 +39,8 @@ function leerHorario(id_curso, titulo, callback) {
     conexion.connect(function (err) {
         if (!err) {
             var sql = "select * " +
-                    "from horarios_'" + titulo +"' " +
-                    "where id_curso = '" + id_curso +"';";
+                    "from horarios_'" + titulo + "' " +
+                    "where id_curso = '" + id_curso + "';";
             conexion.query(sql, function (err, resultado) {
                 if (!err) {
                     callback(null, resultado);

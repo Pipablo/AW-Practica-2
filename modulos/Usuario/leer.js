@@ -9,10 +9,10 @@ function leer(id_usuario, callback) {
 
     conexion.connect(function (err) {
         if (!err) {
-            var sql = "select titulo, localidad, fecha_inicio, fecha_fin " + 
+            var sql = "select titulo, localidad, fecha_inicio, fecha_fin " +
                     "from curso, inscritos, usuarios " +
-                    "where curso.id = inscritos.id_curso and inscritos.id_usuario = usuarios.id and usuario.id = '" + id_usuario + "';";
-            conexion.query(sql, function (err, resultado) {
+                    "where curso.id = inscritos.id_curso and inscritos.id_usuario = usuarios.id and usuario.id = ?;";
+            conexion.query(sql, [id_usuario], function (err, resultado) {
                 if (!err) {
                     callback(null, resultado);
                 } else {

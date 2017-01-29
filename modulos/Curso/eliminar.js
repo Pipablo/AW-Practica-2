@@ -10,8 +10,8 @@ function eliminar(id, callback) {
     conexion.connect(function (err) {
         if (!err) {
             var sql = "DELETE FROM `curso`" +
-                    "WHERE `curso`.`id` = '" + id + "';";
-            conexion.query(sql, function (err, resultado) {
+                    "WHERE `curso`.`id` = ?;";
+            conexion.query(sql, [id], function (err, resultado) {
                 if (!err) {
                     callback(null, resultado);
                 } else {

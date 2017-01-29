@@ -52,3 +52,16 @@ app.get("/buscarCurso", function (request, response) {
         }
     });
 });
+app.get("/leerCurso", function (request, response) {
+    var id = request.query.id;
+    
+    curso.leer.leerDatosCurso(id, function (err, curso){
+        if(!err){
+            response.status(200);
+            response.json(curso[0]);
+        } else{
+            response.status(400);
+            response.end();
+        }
+    });
+});

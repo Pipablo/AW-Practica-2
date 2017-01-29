@@ -11,8 +11,8 @@ function inscribir(id_curso, id_usuario, callback) {
         if (!err) {
             var sql = "insert into inscritos " +
                     "('id', 'id_curso', 'id_usuario') " +
-                    "VALUES (NULL, '" + id_curso + "', '" + id_usuario + "'";
-            conexion.query(sql, function (err, resultado) {
+                    "VALUES (NULL, ?, ?);";
+            conexion.query(sql, [id_curso, id_usuario], function (err, resultado) {
                 if (!err) {
                     callback(null, resultado);
                 } else {

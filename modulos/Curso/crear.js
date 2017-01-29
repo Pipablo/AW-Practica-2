@@ -13,8 +13,8 @@ function crear(titulo, descripcion, fecha_inicio, fecha_fin, localidad, direccio
         if (!err) {
             var sql = "INSERT INTO `curso` " +
                     "(`id`, `titulo`, `descripcion`, `fecha_inicio`, `fecha_fin`, `localidad`, `direccion`, `plazas_disponibles`, `imagen`) " +
-                    "VALUES (NULL, '" + titulo + "', '" + descripcion + "', '" + fecha_inicio + "', '" + fecha_fin + "', '" + localidad + "', '" + direccion + "', '" + plazas_disponibles + "', " + imagen + ");";
-            conexion.query(sql, function (err, resultado) {
+                    "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?);";
+            conexion.query(sql, [titulo, descripcion, fecha_inicio, fecha_fin, localidad, direccion, plazas_disponibles, imagen], function (err, resultado) {
                 if (!err) {
                     callback(null, resultado.insertId);
                 } else {
@@ -25,5 +25,4 @@ function crear(titulo, descripcion, fecha_inicio, fecha_fin, localidad, direccio
         }
     });
 }
-;
 

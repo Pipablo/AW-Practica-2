@@ -9,6 +9,7 @@
         <script src="JQuery/menu.js"></script>
         <script src="JQuery/crearCurso.js"></script>
         <script src="JQuery/buscarCurso.js"></script>
+        <script src="JQuery/leerCurso.js"></script>
 
         <!-- CSS -->
         <link rel="stylesheet" href="css/plantilla.css"/>
@@ -32,6 +33,33 @@
         </div>
 
         <div class="contenido">
+
+    <div class="modal fade" id="infoCurso" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title" id="infoCursoTitulo"></h4>
+                </div>
+                <div class="modal-body">
+                  <h5 class="modal-title">Descripcion:</h5>
+                  <p id="infoCursoDescripcion"></p>
+                  <h5 class="modal-title">Direccion:</h5>
+                  <p id="infoCursoDireccion"></p>
+                  <h5 class="modal-title">Localidad:</h5>
+                  <p id="infoCursoLocalidad"></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  <div class="btn btn-default" id="modificar">Modificar</div>
+                </div>
+              </div>
+      
+         </div>
+    </div>
+
             <div class="pagina busquedaCurso escondido">
                 <h1>Búsqueda de cursos</h1>
                 <form class="form-inline">
