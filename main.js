@@ -66,7 +66,8 @@ app.get("/leerCurso", function (request, response) {
     });
 });
 
-app.put("/modificarCurso/:titulo/:descripcion/:fecha_inicio/:fecha_fin/:localidad/:direccion/:plazas_disponibles", function (request, response) {
+app.put("/modificarCurso/:titulo/:id/:descripcion/:fecha_inicio/:fecha_fin/:localidad/:direccion/:plazas_disponibles", function (request, response) {
+    var id = request.params.id;
     var titulo = request.params.titulo;
     var descripcion = request.params.descripcion;
     var fecha_inicio = request.params.fecha_inicio;
@@ -75,11 +76,13 @@ app.put("/modificarCurso/:titulo/:descripcion/:fecha_inicio/:fecha_fin/:localida
     var direccion = request.params.direccion;
     var plazas_disponibles = request.params.plazas_disponibles;
     
-    curso.editar("ID", titulo, descripcion, fecha_inicio, fecha_fin, localidad, direccion, plazas_disponibles, function (err, resultado){
+    curso.editar(id, titulo, descripcion, fecha_inicio, fecha_fin, localidad, direccion, plazas_disponibles, function (err, resultado){
        if(!err){
-           
+           response.status(200);
+           response.json(resultado);
        } else{
-           
+           response.status(400);
+           response.end();
        }
     });
 });

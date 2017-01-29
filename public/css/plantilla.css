@@ -20,5 +20,21 @@
 .identificarse{
     float: right;
 }
+.mensaje{
+    border: 2px solid darkgreen;
+    background-color: lightgreen;
+    color: darkgreen;
+    padding-left: 8px;
+    margin-top: 8px;
+    padding-top: 6px;
+}
+.mensajeError{
+    border: 2px solid darkred;
+    background-color: burlywood;
+    color: darkred;
+    padding-left: 8px;
+    margin-top: 8px;
+    padding-top: 6px;
+}
 
 

@@ -9,6 +9,7 @@ $(document).ready(function () {
             url:"/buscarCurso",
             
             success: function(data, textStatus, jqXHR){
+                $("#tabla_busqueda tr").remove();
                data.forEach(function (curso){
                    $("#tabla_busqueda").append(
                            

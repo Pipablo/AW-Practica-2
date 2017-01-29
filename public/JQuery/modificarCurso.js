@@ -1,27 +1,30 @@
 $(document).ready(function () {
-    $("#").click(function () {
-        var titulo_curso = $("#").val();
-        var descripcion = $("#").val();
-        var fecha_inicio = $("#").val();
-        var fecha_fin = $("#").val();
-        var localidad = $("#").val();
-        var direccion = $("#").val();
-        var plazas_disponibles = $("#").val();
+        $("#botonModificarCurso").click(function () {
+            var titulo_curso = $("#Modtitulo").val();
+            var descripcion = $("#Moddescripcion").val();
+            var fecha_inicio = $("#Modfecha_inicio").val();
+            var fecha_fin = $("#Modfecha_fin").val();
+            var localidad = $("#Modlocalidad").val();
+            var direccion = $("#Moddireccion").val();
+            var plazas_disponibles = $("#Modplazas").val();
+            var id = $("#ModID").val();
 
-        $.ajax({
-            type: "PUT",
+            $.ajax({
+                type: "PUT",
 
-            url: "/modificarCurso/:" + titulo_curso + "/" + descripcion + "/" + fecha_inicio + "/" + fecha_fin + "/" + localidad + "/" + direccion + "/" + plazas_disponibles,
+                url: "/modificarCurso/:" + titulo_curso + "/:" + id + "/:" + descripcion + "/:" + fecha_inicio + "/:" + fecha_fin + "/:" + localidad + "/:" + direccion + "/:" + plazas_disponibles,
 
-            success: function (data, textStatus, jqXHR) {
-                console.log("Se ha modificado correctamente");
-            },
+                success: function (data, textStatus, jqXHR) {
+                    console.log("Se ha modificado correctamente");
+                },
 
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log("Se ha producido un error: " + errorThrown);
-            }
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log("Se ha producido un error: " + errorThrown);
+                }
 
 
-        });
+            });
     });
+
+   
 });

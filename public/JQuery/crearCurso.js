@@ -25,16 +25,33 @@ $(document).ready(function () {
             }),
 
             success: function (data, textStatus, jqXHR) {
+                renderMensaje();
                 $("#mensaje").text(
                         "Se ha creado el curso " + data + " correctamente");
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
-                alert("Se ha producido un error: " + errorThrown);
+                renderMensajeError();
+                $("#mensajeError").text("Se ha producido un error: " + errorThrown);
             }
 
         });
     });
+    
+    function renderMensaje() {
+    $('.contenido .pagina').removeClass('visible');
+    $('.contenido .pagina').addClass('escondido');
+    var page = $('.mensaje');
+    page.removeClass('escondido');
+    page.addClass('visible');
+}
+function renderMensajeError() {
+    $('.contenido .pagina').removeClass('visible');
+    $('.contenido .pagina').addClass('escondido');
+    var page = $('.mensajeError');
+    page.removeClass('escondido');
+    page.addClass('visible');
+}
 });
 
 

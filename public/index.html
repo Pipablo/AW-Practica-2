@@ -10,6 +10,7 @@
         <script src="JQuery/crearCurso.js"></script>
         <script src="JQuery/buscarCurso.js"></script>
         <script src="JQuery/leerCurso.js"></script>
+        <script src="JQuery/modificarCurso.js"></script>
 
         <!-- CSS -->
         <link rel="stylesheet" href="css/plantilla.css"/>
@@ -33,6 +34,13 @@
         </div>
 
         <div class="contenido">
+            
+        <div class="pagina mensaje escondido">
+            <p id="mensaje"></p>
+        </div>
+        <div class="pagina mensajeError escondido">
+            <p id="mensajeError"></p>
+        </div>
 
     <div class="modal fade" id="infoCurso" role="dialog">
         <div class="modal-dialog">
@@ -44,16 +52,29 @@
                   <h4 class="modal-title" id="infoCursoTitulo"></h4>
                 </div>
                 <div class="modal-body">
+                  <h5 class="modal-title">ID:</h5>
+                  <p id="infoCursoID"></p>
                   <h5 class="modal-title">Descripcion:</h5>
                   <p id="infoCursoDescripcion"></p>
                   <h5 class="modal-title">Direccion:</h5>
                   <p id="infoCursoDireccion"></p>
                   <h5 class="modal-title">Localidad:</h5>
                   <p id="infoCursoLocalidad"></p>
+                  <h5 class="modal-title">Fecha de inicio:</h5>
+                  <p id="infoCursoFecha_inicio"></p>
+                  <h5 class="modal-title">Fecha de finalización</h5>
+                  <p id="infoCursoFecha_fin"></p>
+                  <h5 class="modal-title">Plazas disponibles</h5>
+                  <p id="infoCursoPlazas"></p>
+                  
                 </div>
                 <div class="modal-footer">
+                  <div class="btn btn-danger" id="eliminar">Eliminar</div>
+                    
+                  <div class="btn btn-primary" id="modificar">Modificar</div>
+                   
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                  <div class="btn btn-default" id="modificar">Modificar</div>
+                  
                 </div>
               </div>
       
@@ -200,6 +221,119 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="btn btn-primary" id="crearCurso">Enviar</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="pagina modificacionCurso escondido">
+                <h1>Modificación de un curso</h1>
+                <form class="form-horizontal">
+                     <div class="form-group">
+                        <label class="control-label col-sm-2" for="ModID">ID:</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="ModID" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="Modtitulo">Titulo:</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="Modtitulo" placeholder="Titulo del curso">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="Moddescripcion">Descripcion:</label>
+                        <div class="col-sm-5">
+                            <textarea class="form-control" rows="5" id="Moddescripcion"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="Modfecha_inicio">Fecha de inicio:</label>
+                        <div class="col-sm-5">
+                            <input type="date" class="form-control" id="Modfecha_inicio" placeholder="dd/mm/yyyy">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="Modfecha_fin">Fecha de finalización:</label>
+                        <div class="col-sm-5">
+                            <input type="date" class="form-control" id="Modfecha_fin" placeholder="dd/mm/yyyy">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="Modlocalidad">Seleccione localidad:</label>
+                        <div class="col-sm-5">
+                            <select class="form-control" id="Modlocalidad">
+                                <option value='0'>Localidad</option>
+                                <option value='Álava'>Álava</option>
+                                <option value='Albacete'>Albacete</option>
+                                <option value='Alicante/Alacant'>Alicante/Alacant</option>
+                                <option value='Almería'>Almería</option>
+                                <option value='Asturias'>Asturias</option>
+                                <option value='Ávila'>Ávila</option>
+                                <option value='Badajoz'>Badajoz</option>
+                                <option value='Barcelona'>Barcelona</option>
+                                <option value='Burgos'>Burgos</option>
+                                <option value='Cáceres'>Cáceres</option>
+                                <option value='Cádiz'>Cádiz</option>
+                                <option value='Cantabria'>Cantabria</option>
+                                <option value='Castellón/Castelló'>Castellón/Castelló</option>
+                                <option value='Ceuta'>Ceuta</option>
+                                <option value='Ciudad Real'>Ciudad Real</option>
+                                <option value='Córdoba'>Córdoba</option>
+                                <option value='Cuenca'>Cuenca</option>
+                                <option value='Girona'>Girona</option>
+                                <option value='Las Palmas'>Las Palmas</option>
+                                <option value='Granada'>Granada</option>
+                                <option value='Guadalajara'>Guadalajara</option>
+                                <option value='Guipúzcoa'>Guipúzcoa</option>
+                                <option value='Huelva'>Huelva</option>
+                                <option value='Huesca'>Huesca</option>
+                                <option value='Islas Baleares'>Islas Baleares</option>
+                                <option value='Jaén'>Jaén</option>
+                                <option value='A Coruña'>A Coruña</option>
+                                <option value='La Rioja'>La Rioja</option>
+                                <option value='León'>León</option>
+                                <option value='Lleida'>Lleida</option>
+                                <option value='Lugo'>Lugo</option>
+                                <option value='Madrid'>Madrid</option>
+                                <option value='Málaga'>Málaga</option>
+                                <option value='Melilla'>Melilla</option>
+                                <option value='Murcia'>Murcia</option>
+                                <option value='Navarra'>Navarra</option>
+                                <option value='Ourense'>Ourense</option>
+                                <option value='Palencia'>Palencia</option>
+                                <option value='Pontevedra'>Pontevedra</option>
+                                <option value='Salamanca'>Salamanca</option>
+                                <option value='Segovia'>Segovia</option>
+                                <option value='Sevilla'>Sevilla</option>
+                                <option value='Soria'>Soria</option>
+                                <option value='Tarragona'>Tarragona</option>
+                                <option value='Santa Cruz de Tenerife'>Santa Cruz de Tenerife</option>
+                                <option value='Teruel'>Teruel</option>
+                                <option value='Toledo'>Toledo</option>
+                                <option value='Valencia'>Valencia</option>
+                                <option value='Valladolid'>Valladolid</option>
+                                <option value='Vizcaya'>Vizcaya</option>
+                                <option value='Zamora'>Zamora</option>
+                                <option value='Zaragoza'>Zaragoza</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="Moddireccion">Dirección:</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="Moddireccion" placeholder="Calle/Avenida">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="Modplazas">Plazas disponibles:</label>
+                        <div class="col-sm-5">
+                            <input type="number" class="form-control" id="Modplazas">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="btn btn-primary" id="botonModificarCurso">Enviar</div>
                         </div>
                     </div>
                 </form>
