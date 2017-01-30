@@ -1,34 +1,35 @@
 $(document).ready(function () {
     var curso;
-    $("#tabla_busqueda").on("click",".leerCurso",function (){
+    $("#tabla_busqueda").on("click", ".leerCurso", function () {
         var id_curso = $(this).data('id');
         $.ajax({
-            type:"GET",
+            type: "GET",
             data: {
                 id: id_curso
             },
-            url:"/leerCurso",
-            
-            success: function(data, textStatus, jqXHR){
-                 $("#infoCursoID").text(id_curso);
-            	 $("#infoCursoTitulo").text(data.titulo);
-                 $("#infoCursoDescripcion").text(data.descripcion);
-            	 $("#infoCursoLocalidad").text(data.localidad);
-            	 $("#infoCursoDireccion").text(data.direccion);
-            	 $("#infoCursoFecha_inicio").text(data.fecha_inicio);
-                 $("#infoCursoFecha_fin").text(data.fecha_fin);
-                 $("#infoCursoPlazas").text(data.plazas_disponibles);
-                 
-                 curso = data;
+            url: "/leerCurso",
+
+            success: function (data, textStatus, jqXHR) {
+                $("#infoCursoID").text(id_curso);
+                $("#infoCursoTitulo").text(data.titulo);
+                $("#infoCursoDescripcion").text(data.descripcion);
+                $("#infoCursoLocalidad").text(data.localidad);
+                $("#infoCursoDireccion").text(data.direccion);
+                $("#infoCursoFecha_inicio").text(data.fecha_inicio);
+                $("#infoCursoFecha_fin").text(data.fecha_fin);
+                $("#infoCursoPlazas").text(data.plazas_disponibles);
+
+                curso = data;
             },
-            
-            error: function(jqXHR, textStatus, errorThrown){
-               console.log("Se ha producido un error: " + errorThrown);
+
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log("Se ha producido un error: " + errorThrown);
             }
-               
-            
+
+
         });
     });
+
     $("#modificar").click(function () {
         $('#infoCurso').modal('toggle');
         renderModificarCurso();
@@ -41,13 +42,28 @@ $(document).ready(function () {
         $("#Moddireccion").val(curso.direccion);
         $("#Modplazas").val(curso.plazas_disponibles);
     });
-    
+
     $("#eliminar").click(function () {
         $('#infoCurso').modal('toggle');
         var id = curso.id;
-        //hacer el eliminar
+        
+        $.ajax({
+            type: 'DELETE',
+            dataType: 'json',
+            contentType: 'application/json',
+            
+            url: "/eliminarCurso/" + id,
+            
+            success: function (data, textStatus, jqXHR) {
+                
+            },
+            
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log("Se ha producido un error " + errorThrown)
+            },
+        });
     });
-     function renderModificarCurso() {
+    function renderModificarCurso() {
         $('.contenido .pagina').removeClass('visible');
         $('.contenido .pagina').addClass('escondido');
         var page = $('.modificacionCurso');

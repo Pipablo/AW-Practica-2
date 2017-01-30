@@ -16,11 +16,11 @@
         <link rel="stylesheet" href="css/plantilla.css"/>
 
         <!-- Bootstrap -->
-            <!-- Latest compiled and minified CSS -->
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-            <!-- Latest compiled JavaScript -->
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
 
     <body>
@@ -34,52 +34,52 @@
         </div>
 
         <div class="contenido">
-            
-        <div class="pagina mensaje escondido">
-            <p id="mensaje"></p>
-        </div>
-        <div class="pagina mensajeError escondido">
-            <p id="mensajeError"></p>
-        </div>
 
-    <div class="modal fade" id="infoCurso" role="dialog">
-        <div class="modal-dialog">
-        
-          <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title" id="infoCursoTitulo"></h4>
+            <div class="pagina mensaje escondido">
+                <p id="mensaje"></p>
+            </div>
+            <div class="pagina mensajeError escondido">
+                <p id="mensajeError"></p>
+            </div>
+
+            <div class="modal fade" id="infoCurso" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" id="infoCursoTitulo"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <h5 class="modal-title">ID:</h5>
+                            <p id="infoCursoID"></p>
+                            <h5 class="modal-title">Descripcion:</h5>
+                            <p id="infoCursoDescripcion"></p>
+                            <h5 class="modal-title">Direccion:</h5>
+                            <p id="infoCursoDireccion"></p>
+                            <h5 class="modal-title">Localidad:</h5>
+                            <p id="infoCursoLocalidad"></p>
+                            <h5 class="modal-title">Fecha de inicio:</h5>
+                            <p id="infoCursoFecha_inicio"></p>
+                            <h5 class="modal-title">Fecha de finalización</h5>
+                            <p id="infoCursoFecha_fin"></p>
+                            <h5 class="modal-title">Plazas disponibles</h5>
+                            <p id="infoCursoPlazas"></p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="btn btn-danger" id="eliminar">Eliminar</div>
+
+                            <div class="btn btn-primary" id="modificar">Modificar</div>
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                        </div>
+                    </div>
+
                 </div>
-                <div class="modal-body">
-                  <h5 class="modal-title">ID:</h5>
-                  <p id="infoCursoID"></p>
-                  <h5 class="modal-title">Descripcion:</h5>
-                  <p id="infoCursoDescripcion"></p>
-                  <h5 class="modal-title">Direccion:</h5>
-                  <p id="infoCursoDireccion"></p>
-                  <h5 class="modal-title">Localidad:</h5>
-                  <p id="infoCursoLocalidad"></p>
-                  <h5 class="modal-title">Fecha de inicio:</h5>
-                  <p id="infoCursoFecha_inicio"></p>
-                  <h5 class="modal-title">Fecha de finalización</h5>
-                  <p id="infoCursoFecha_fin"></p>
-                  <h5 class="modal-title">Plazas disponibles</h5>
-                  <p id="infoCursoPlazas"></p>
-                  
-                </div>
-                <div class="modal-footer">
-                  <div class="btn btn-danger" id="eliminar">Eliminar</div>
-                    
-                  <div class="btn btn-primary" id="modificar">Modificar</div>
-                   
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                  
-                </div>
-              </div>
-      
-         </div>
-    </div>
+            </div>
 
             <div class="pagina busquedaCurso escondido">
                 <h1>Búsqueda de cursos</h1>
@@ -225,11 +225,11 @@
                     </div>
                 </form>
             </div>
-            
+
             <div class="pagina modificacionCurso escondido">
                 <h1>Modificación de un curso</h1>
                 <form class="form-horizontal">
-                     <div class="form-group">
+                    <div class="form-group">
                         <label class="control-label col-sm-2" for="ModID">ID:</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="ModID" readonly>
