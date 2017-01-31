@@ -41,8 +41,10 @@ app.post("/crearCurso", function (request, response) {
 
 app.get("/buscarCurso", function (request, response) {
     var titulo = request.query.titulo;
+    var num = request.query.num;
+    var pos = request.query.pos;
 
-    curso.buscar(titulo, function (err, cursos) {
+    curso.buscar(titulo, num, pos, function (err, cursos) {
         if (!err) {
             response.status(200);
             response.json(cursos);
