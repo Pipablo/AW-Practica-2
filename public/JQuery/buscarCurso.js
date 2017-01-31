@@ -24,7 +24,10 @@ $(document).ready(function () {
                             $("<td>").text(curso.fecha_fin),
                             $("<td>").text(curso.plazas_disponibles)));
                 });
-                var numpaginas = data[0].tamano / numero + 1;
+                var numpaginas = data[0].tamano / numero;
+                if(data[0].tamano%numero !== 0){
+                    numpaginas = numpaginas + 1;
+                }
                 for (var x = 1; x <= numpaginas; x++) {
                     if (x === 1) {
                         $("#paginasTabla").append(
@@ -71,7 +74,10 @@ $(document).ready(function () {
                             $("<td>").text(curso.fecha_fin),
                             $("<td>").text(curso.plazas_disponibles)));
                 });
-                var numpaginas = data[0].tamano / numero + 1;
+                var numpaginas = data[0].tamano / numero;
+                if(data[0].tamano%numero !== 0){
+                    numpaginas = numpaginas + 1;
+                }
                 for (var x = 1; x <= numpaginas; x++) {
                     if (x === Number(aux)) {
                         $("#paginasTabla").append(
