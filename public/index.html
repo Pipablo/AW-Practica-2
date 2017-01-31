@@ -27,10 +27,10 @@
         <div class="menu">
             <ul class="list-group" id="lista">
                 <li class="list-group-item">Portal de cursos</li>
-                <li class="list-group-item" id="cc">Crear Curso</li>
-                <li class="list-group-item" id="bc">Buscar Cursos</li>
+                <li class="list-group-item link" id="cc">Crear Curso</li>
+                <li class="list-group-item link" id="bc">Buscar Cursos</li>
             </ul>
-            <button type="button" class="btn btn-primary identificarse">Identificarse</button>
+            <button type="button" class="btn btn-primary identificarse link">Identificarse</button>
         </div>
 
         <div class="contenido">
@@ -48,7 +48,7 @@
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <button type="button" class="close link" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title" id="infoCursoTitulo"></h4>
                         </div>
                         <div class="modal-body">
@@ -69,11 +69,13 @@
 
                         </div>
                         <div class="modal-footer">
-                            <div class="btn btn-danger" id="eliminar">Eliminar</div>
+                            <div class="btn btn-danger link" id="eliminar">Eliminar</div>
 
-                            <div class="btn btn-primary" id="modificar">Modificar</div>
+                            <div class="btn btn-primary link" id="modificar">Modificar</div>
+                            
+                            <div class="btn btn-primary link" id="clase">Añadir clase</div>
 
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-default link" data-dismiss="modal">Cerrar</button>
 
                         </div>
                     </div>
@@ -89,7 +91,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control" id="busquedaTitulo">
                             <div class="input-group-btn">
-                                <div class="btn btn-primary" id="buscarCurso">
+                                <div class="btn btn-primary link" id="buscarCurso">
                                     <i class="glyphicon glyphicon-search"></i> Buscar
                                 </div>
                             </div>
@@ -110,7 +112,7 @@
 
                     </tbody>
                 </table>
-                <ul id="paginasTabla" class="pagination">
+                <ul id="paginasTabla" class="pagination centro">
                     
                 </ul>
             </div>
@@ -216,7 +218,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <div class="btn btn-primary" id="crearCurso">Enviar</div>
+                            <div class="btn btn-primary link" id="crearCurso">Enviar</div>
                         </div>
                     </div>
                 </form>
@@ -329,9 +331,48 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <div class="btn btn-primary" id="botonModificarCurso">Enviar</div>
+                            <div class="btn btn-primary link" id="botonModificarCurso">Enviar</div>
                         </div>
                     </div>
+                </form>
+            </div>
+            <div class="pagina anadirClase escondido">
+                <h1>Añadir clase al curso</h1>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="AnadirID">ID:</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="AnadirID" readonly>
+                        </div>
+                    </div>
+            
+            
+                <div class="form-group">
+                        <label class="control-label col-sm-2" for="dia">Día</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="dia" placeholder="Lunes">
+                        </div>
+                </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="hora_inicio">Hora Inicio</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="hora_inicio" placeholder="9:00">
+                        </div>
+                        </div>
+                        <div class="form-group">
+                        <label class="control-label col-sm-2" for="hora_fin">Hora Fin</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="hora_fin" placeholder="11:00">
+                        </div>
+                        </div>
+                        <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="btn btn-primary link" id="BotonAnadirClase">Enviar</div>
+                                
+                                    <div class="btn btn-primary link" id="BotonAnadirClase+">Enviar y añadir mas</div>
+                                </div>
+                            </div>
+                    
                 </form>
             </div>
         </div>

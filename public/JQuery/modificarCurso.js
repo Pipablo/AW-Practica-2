@@ -29,16 +29,33 @@ $(document).ready(function () {
             url: "/modificarCurso/" + cam_id,
 
             success: function (data, textStatus, jqXHR) {
-                console.log("Se ha modificado correctamente");
+                $("#tabla_busqueda tr").remove();
+                $("#paginasTabla li").remove();
+                renderMensaje();
+                $("#mensaje").text("Se ha modificado con exito el curso " + cam_id);
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
-                console.log("Se ha producido un error: " + errorThrown);
+                renderMensajeError();
+                $("#mensajeError").text("Se ha producido un error: " + errorThrown);
             }
 
 
         });
     });
-
+    function renderMensajeError() {
+        $('.contenido .pagina').removeClass('visible');
+        $('.contenido .pagina').addClass('escondido');
+        var page = $('.mensajeError');
+        page.removeClass('escondido');
+        page.addClass('visible');
+    }
+    function renderMensaje() {
+        $('.contenido .pagina').removeClass('visible');
+        $('.contenido .pagina').addClass('escondido');
+        var page = $('.mensaje');
+        page.removeClass('escondido');
+        page.addClass('visible');
+    }
 
 });

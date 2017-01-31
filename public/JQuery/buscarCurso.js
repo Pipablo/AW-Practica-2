@@ -24,8 +24,9 @@ $(document).ready(function () {
                             $("<td>").text(curso.fecha_fin),
                             $("<td>").text(curso.plazas_disponibles)));
                 });
+                $("#tabla_busqueda tr").addClass("link");
                 var numpaginas = data[0].tamano / numero;
-                if(data[0].tamano%numero !== 0){
+                if (data[0].tamano % numero !== 0) {
                     numpaginas = numpaginas + 1;
                 }
                 for (var x = 1; x <= numpaginas; x++) {
@@ -35,23 +36,25 @@ $(document).ready(function () {
                                 $("<a>").text(x)));
                     } else {
                         $("#paginasTabla").append(
-                                $("<li class = pagina data-pag = " + x + ">").append(
+                                $("<li class = paginacion data-pag = " + x + ">").append(
                                 $("<a>").text(x)));
                     }
                 }
+                $("#paginasTabla li").addClass("link");
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
-                console.log("Se ha producido un error: " + errorThrown);
+                renderMensajeError();
+                $("#mensajeError").text("Se ha producido un error: " + errorThrown);
             }
 
 
         });
     });
 
-    $("#paginasTabla").on("click", ".pagina", function () { 
+    $("#paginasTabla").on("click", ".paginacion", function () {
         var titulo_curso = $("#busquedaTitulo").val();
-        var aux =$(this).data("pag");
+        var aux = $(this).data("pag");
         var posicion = (Number(aux) - 1) * numero;
         $.ajax({
             type: "GET",
@@ -74,8 +77,9 @@ $(document).ready(function () {
                             $("<td>").text(curso.fecha_fin),
                             $("<td>").text(curso.plazas_disponibles)));
                 });
+                $("#tabla_busqueda tr").addClass("link");
                 var numpaginas = data[0].tamano / numero;
-                if(data[0].tamano%numero !== 0){
+                if (data[0].tamano % numero !== 0) {
                     numpaginas = numpaginas + 1;
                 }
                 for (var x = 1; x <= numpaginas; x++) {
@@ -85,18 +89,27 @@ $(document).ready(function () {
                                 $("<a>").text(x)));
                     } else {
                         $("#paginasTabla").append(
-                                $("<li class = pagina data-pag = " + x + ">").append(
+                                $("<li class = paginacion data-pag = " + x + ">").append(
                                 $("<a>").text(x)));
                     }
                 }
+                $("#paginasTabla li").addClass("link");
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
-                console.log("Se ha producido un error: " + errorThrown);
+                renderMensajeError();
+                $("#mensajeError").text("Se ha producido un error: " + errorThrown);
             }
 
 
         });
-    
+
     });
+    function renderMensajeError() {
+        $('.contenido .pagina').removeClass('visible');
+        $('.contenido .pagina').addClass('escondido');
+        var page = $('.mensajeError');
+        page.removeClass('escondido');
+        page.addClass('visible');
+    }
 });

@@ -36,5 +36,24 @@
     margin-top: 8px;
     padding-top: 6px;
 }
+.centro{
+    float:right;
+    position:relative;
+    left:-50%;
+    text-align:left;
+}
+.centro ul{
+    list-style:none;
+    position:relative;
+    left:50%;
+}
+
+.centro li{
+    float:left;
+    position:relative;
+}
+.link{
+    cursor:pointer;
+}
 
 

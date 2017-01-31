@@ -23,7 +23,8 @@ $(document).ready(function () {
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
-                console.log("Se ha producido un error: " + errorThrown);
+                renderMensajeError();
+                $("#mensajeError").text("Se ha producido un error: " + errorThrown);
             }
 
 
@@ -46,27 +47,58 @@ $(document).ready(function () {
     $("#eliminar").click(function () {
         $('#infoCurso').modal('toggle');
         var id = curso.id;
-        
+
         $.ajax({
             type: 'DELETE',
             dataType: 'json',
             contentType: 'application/json',
-            
+
             url: "/eliminarCurso/" + id,
-            
+
             success: function (data, textStatus, jqXHR) {
-                
+                $("#tabla_busqueda tr").remove();
+                $("#paginasTabla li").remove();
+                renderMensaje();
+                $("#mensaje").text("Se ha eliminado con exito el curso " + id);
             },
-            
+
             error: function (jqXHR, textStatus, errorThrown) {
-                console.log("Se ha producido un error " + errorThrown)
-            },
+                renderMensajeError();
+                $("#mensajeError").text("Se ha producido un error: " + errorThrown);
+            }
         });
+        
+    });
+    $("#clase").click(function () {
+       $('#infoCurso').modal('toggle');
+        renderAnadirClase();
+        $("#AnadirID").val(curso.id);
     });
     function renderModificarCurso() {
         $('.contenido .pagina').removeClass('visible');
         $('.contenido .pagina').addClass('escondido');
         var page = $('.modificacionCurso');
+        page.removeClass('escondido');
+        page.addClass('visible');
+    }
+    function renderAnadirClase() {
+        $('.contenido .pagina').removeClass('visible');
+        $('.contenido .pagina').addClass('escondido');
+        var page = $('.anadirClase');
+        page.removeClass('escondido');
+        page.addClass('visible');
+    }
+    function renderMensajeError() {
+        $('.contenido .pagina').removeClass('visible');
+        $('.contenido .pagina').addClass('escondido');
+        var page = $('.mensajeError');
+        page.removeClass('escondido');
+        page.addClass('visible');
+    }
+    function renderMensaje() {
+        $('.contenido .pagina').removeClass('visible');
+        $('.contenido .pagina').addClass('escondido');
+        var page = $('.mensaje');
         page.removeClass('escondido');
         page.addClass('visible');
     }
