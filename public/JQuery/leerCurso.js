@@ -67,13 +67,14 @@ $(document).ready(function () {
                 $("#mensajeError").text("Se ha producido un error: " + errorThrown);
             }
         });
-        
     });
+
     $("#clase").click(function () {
-       $('#infoCurso').modal('toggle');
+        $('#infoCurso').modal('toggle');
         renderAnadirClase();
         $("#AnadirID").val(curso.id);
     });
+
     function renderModificarCurso() {
         $('.contenido .pagina').removeClass('visible');
         $('.contenido .pagina').addClass('escondido');

@@ -89,6 +89,23 @@ app.put("/modificarCurso/:id", function (request, response) {
     });
 });
 
+app.put("/insertarHorario/:id", function (request, response){
+    var id = request.params.id;
+    var dia = request.body.dia;
+    var hora_inicio = request.body.hora_inicio;
+    var hora_fin = request.body.hora_fin;
+    
+    curso.anadirHorario(id, dia, hora_inicio, hora_fin, function(err, resultado){
+        if(!err){
+            response.status(200);
+            response.json(resultado);
+        } else{
+            response.status(500);
+            response.end();
+        }
+    });
+});
+
 app.delete("/eliminarCurso/:id", function (request, response) {
     var id = request.params.id;
     

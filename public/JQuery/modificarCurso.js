@@ -39,10 +39,9 @@ $(document).ready(function () {
                 renderMensajeError();
                 $("#mensajeError").text("Se ha producido un error: " + errorThrown);
             }
-
-
         });
     });
+
     function renderMensajeError() {
         $('.contenido .pagina').removeClass('visible');
         $('.contenido .pagina').addClass('escondido');
@@ -50,6 +49,7 @@ $(document).ready(function () {
         page.removeClass('escondido');
         page.addClass('visible');
     }
+
     function renderMensaje() {
         $('.contenido .pagina').removeClass('visible');
         $('.contenido .pagina').addClass('escondido');
@@ -57,5 +57,4 @@ $(document).ready(function () {
         page.removeClass('escondido');
         page.addClass('visible');
     }
-
 });
