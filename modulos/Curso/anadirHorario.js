@@ -16,42 +16,46 @@ function anadirHorario(id, dia, hora_inicio, hora_fin, callback) {
                     "WHERE table_schema = ? " +
                     "AND table_name = horarios_? " +
                     "LIMIT 1;";
-            conexion.query(sql, [config.dbName, id], function () {
+            conexion.query(sql, [config.dbName, id], function (err, resultado) {
+                if (!err) {
+                    if (resultado.length === 0) {
+                        var nombreTabla = "horarios_" + id;
+                        sql = "CREATE TABLE `aw - practica2`.`horarios_XXXXX` " +
+                                "(`id` INT NOT NULL AUTO_INCREMENT , `dia` VARCHAR(10) NOT NULL , `hora_inicio` VARCHAR(5) NOT NULL , `hora_fin` VARCHAR(5) NOT NULL , PRIMARY KEY (`id`)) " +
+                                "ENGINE = InnoDB;";
 
-                if (err) {
-                    sql = "CREATE TABLE ?.horarios_? " +
-                            "(`id` INT NOT NULL AUTO_INCREMENT , `id_curso` INT NOT NULL , `dia` INT NOT NULL , `hora_inicio` INT NOT NULL , `hora_fin` INT NOT NULL , PRIMARY KEY (`id`)) " +
-                            "ENGINE = InnoDB;";
+                        conexion.query(sql, /*[config.dbName, nombreTabla], */function (err, resultado) {
+                            if (!err) {
+                                sql = "insert into `horarios_XXXXX` " +
+                                        "(id, dia, hora_inicio, hora_fin) " +
+                                        "VALUES (NULL, ?, ?, ?);";
 
-                    conexion.query(sql, [config.dbName, id], function (err, resultado) {
-                        if (!err) {
-                            sql = "insert into horarios_? " +
-                                    "VALUES(id, dia, hora_inicio, hora_fin) " +
-                                    "(NULL, ?, ?, ?;";
+                                conexion.query(sql, [id, dia, hora_inicio, hora_fin], function (err, resultado) {
+                                    if (!err) {
+                                        callback(null, resultado);
+                                    } else {
+                                        callback(err);
+                                    }
+                                });
+                            } else {
+                                callback(err);
+                            }
+                        });
+                    } else {
+                        sql = "insert into horarios_? " +
+                                "VALUES(id, dia, hora_inicio, hora_fin) " +
+                                "(NULL, ?, ?, ?;";
 
-                            conexion.query(sql, [id, dia, hora_inicio, hora_fin], function (err, resultado) {
-                                if (!err) {
-                                    callback(null, resultado);
-                                } else {
-                                    callback(err);
-                                }
-                            });
-                        } else {
-                            callback(err);
-                        }
-                    });
+                        conexion.query(sql, [id, dia, hora_inicio, hora_fin], function (err, resultado) {
+                            if (!err) {
+                                callback(null, resultado);
+                            } else {
+                                callback(err);
+                            }
+                        });
+                    }
                 } else {
-                    sql = "insert into horarios_? " +
-                            "VALUES(id, dia, hora_inicio, hora_fin) " +
-                            "(NULL, ?, ?, ?;";
-
-                    conexion.query(sql, [id, dia, hora_inicio, hora_fin], function (err, resultado) {
-                        if (!err) {
-                            callback(null, resultado);
-                        } else {
-                            callback(err);
-                        }
-                    });
+                    callback(err);
                 }
             });
         }

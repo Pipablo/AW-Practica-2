@@ -5,11 +5,11 @@ $(document).ready(function () {
         var hora_inicio_nuevo = $("#hora_inicio").val();
         var hora_fin_nuevo = $("#hora_fin").val();
 
-        var clase = {
+        var clase = JSON.stringify({
             dia: dia_nuevo,
             hora_inicio: hora_inicio_nuevo,
             hora_fin: hora_fin_nuevo
-        };
+        });
 
         $.ajax({
             type: 'PUT',
@@ -21,15 +21,7 @@ $(document).ready(function () {
             url: "/insertarHorario/" + id,
 
             success: function (data, textStatus, jqXHR) {
-                /*$("#tabla_busqueda tr").remove();
-                $("#paginasTabla li").remove();
-                renderMensaje();
-                $("#mensaje").text("Se ha modificado con exito el curso " + id);*/
-
-                render
-                $('#infoCurso').modal('toggle');
-                renderAnadirClase();
-                $("#AnadirID").val(curso.id);
+                renderClaseañadida();
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
@@ -45,11 +37,11 @@ $(document).ready(function () {
         var hora_inicio_nuevo = $("#hora_inicio").val();
         var hora_fin_nuevo = $("#hora_fin").val();
 
-        var clase = {
+        var clase = JSON.stringify({
             dia: dia_nuevo,
             hora_inicio: hora_inicio_nuevo,
             hora_fin: hora_fin_nuevo
-        };
+        });
 
         $.ajax({
             type: 'PUT',
@@ -61,14 +53,7 @@ $(document).ready(function () {
             url: "/insertarHorario/" + id,
 
             success: function (data, textStatus, jqXHR) {
-                /*$("#tabla_busqueda tr").remove();
-                 $("#paginasTabla li").remove();
-                 renderMensaje();
-                 $("#mensaje").text("Se ha modificado con exito el curso " + id);*/
-
-                $('#infoCurso').modal('toggle');
-                renderAnadirClase();
-                $("#AnadirID").val(curso.id);
+                renderAnadirMasClases();
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
@@ -78,12 +63,15 @@ $(document).ready(function () {
         });
     });
     
-    function renderAnadirClase() {
-        $('.contenido .pagina').removeClass('visible');
-        $('.contenido .pagina').addClass('escondido');
-        var page = $('.anadirClase');
+    function renderAnadirMasClases() {        
+        var page = $('.mensaje');
         page.removeClass('escondido');
         page.addClass('visible');
+    }
+    
+    function renderClaseañadida() { 
+        $('.contenido .pagina').removeClass('visible');
+        $('.contenido .pagina').addClass('escondido');
     }
     
     function renderMensajeError() {
