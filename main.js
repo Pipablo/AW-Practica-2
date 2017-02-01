@@ -28,7 +28,8 @@ app.post("/crearCurso", function (request, response) {
     var localidad = request.body.localidad;
     var direccion = request.body.direccion;
     var plazas = request.body.plazas;
-    curso.crear(titulo, descripcion, fecha_inicio, fecha_fin, localidad, direccion, plazas, null, function (err, resultado) {
+    var imagen = request.body.imagen;
+    curso.crear(titulo, descripcion, fecha_inicio, fecha_fin, localidad, direccion, plazas, imagen, function (err, resultado) {
         if (!err) {
             response.status(200);
             response.json(resultado);

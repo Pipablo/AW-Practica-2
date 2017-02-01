@@ -8,6 +8,7 @@ $(document).ready(function () {
         var localidad = $("#localidad").val();
         var direccion = $("#direccion").val();
         var plazas = $("#plazas").val();
+        var imagen = $("#upload").text();
 
 
         $.ajax({
@@ -21,7 +22,8 @@ $(document).ready(function () {
                 fecha_fin: fecha_fin,
                 localidad: localidad,
                 direccion: direccion,
-                plazas: plazas
+                plazas: plazas,
+                imagen: imagen
             }),
 
             success: function (data, textStatus, jqXHR) {

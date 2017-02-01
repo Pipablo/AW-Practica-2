@@ -22,6 +22,7 @@ $(document).ready(function () {
 
             success: function (data, textStatus, jqXHR) {
                 renderClaseañadida();
+                $("#mensaje").text("Clase añadida con éxito");
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
@@ -54,6 +55,7 @@ $(document).ready(function () {
 
             success: function (data, textStatus, jqXHR) {
                 renderAnadirMasClases();
+                $("#mensaje").text("Clase añadida con éxito");
             },
 
             error: function (jqXHR, textStatus, errorThrown) {

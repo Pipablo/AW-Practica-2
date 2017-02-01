@@ -218,10 +218,21 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="control-label col-sm-2">Imagen:</label>
+                        <div class="col-sm-5">
+                            <label class="btn btn-default" for="imagenCurso">
+                            <input type="file" class="form-control" id="imagenCurso" style="display:none;" onchange="$('#upload').html($(this).val());" > Examinar
+                            </label>
+                            <span class='label label-info' id="upload"></span>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="btn btn-primary link" id="crearCurso">Enviar</div>
                         </div>
                     </div>
+                    
                 </form>
             </div>
 
