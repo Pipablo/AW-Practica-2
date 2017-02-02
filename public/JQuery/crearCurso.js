@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $("#crearCurso").on("click", function () {
+        var id;
 
         var titulo = $("#titulo").val();
         var descripcion = $("#descripcion").val();
@@ -8,7 +9,7 @@ $(document).ready(function () {
         var localidad = $("#localidad").val();
         var direccion = $("#direccion").val();
         var plazas = $("#plazas").val();
-        var imagen = $("#upload").text();
+       
 
 
         $.ajax({
@@ -23,13 +24,14 @@ $(document).ready(function () {
                 localidad: localidad,
                 direccion: direccion,
                 plazas: plazas,
-                imagen: imagen
+                
             }),
 
             success: function (data, textStatus, jqXHR) {
                 renderMensaje();
                 $("#mensaje").text(
                         "Se ha creado el curso " + data + " correctamente");
+                id = data;
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
@@ -38,6 +40,33 @@ $(document).ready(function () {
             }
 
         });
+         
+       if($("#imagenCurso").val() !== undefined){
+
+  
+  var myFormData = new FormData($("#formularioCreacion")[0]);
+
+
+        $.ajax({
+            type: 'PUT',
+            processData: false,
+            contentType: false,
+            data: myFormData,
+            
+
+            url: "/insertarImagen/" + id ,
+
+            success: function (data, textStatus, jqXHR) {
+                
+                $("#mensaje").text("Imagen añadida con éxito");
+            },
+
+            error: function (jqXHR, textStatus, errorThrown) {
+                renderMensajeError();
+                $("#mensajeError").text("Se ha producido un error: " + errorThrown);
+            }
+        });
+    }
     });
     
     function renderMensaje() {

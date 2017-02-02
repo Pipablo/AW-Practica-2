@@ -122,7 +122,7 @@
 
             <div class="pagina creacionCurso escondido">
                 <h1>Creación de un curso</h1>
-                <form class="form-horizontal">
+                <form class="form-horizontal" enctype="multipart/form-data" id="formularioCreacion">
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="titulo">Titulo:</label>
                         <div class="col-sm-5">
@@ -223,7 +223,7 @@
                         <label class="control-label col-sm-2">Imagen:</label>
                         <div class="col-sm-5">
                             <label class="btn btn-default" for="imagenCurso">
-                            <input type="file" class="form-control" id="imagenCurso" style="display:none;" onchange="$('#upload').html($(this).val());" > Examinar
+                            <input type="file" name="imagenCurso" class="form-control" id="imagenCurso" style="display:none;" onchange="$('#upload').html($(this).val());" > Examinar
                             </label>
                             <span class='label label-info' id="upload"></span>
                         </div>

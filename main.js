@@ -3,6 +3,10 @@ var config = require("./config.js");
 var app = express();
 var bodyParser = require("body-parser");
 var path = require("path");
+var fs = require("fs");
+var multer = require("multer");
+var upload = multer({ storage: multer.memoryStorage() });
+
 
 var ficherosEstaticos = path.join(__dirname, "public");
 app.use(express.static(ficherosEstaticos));
@@ -125,6 +129,7 @@ app.put("/insertarHorario/:id", function (request, response) {
 app.delete("/eliminarCurso/:id", function (request, response) {
     var id = request.params.id;
 
+
     curso.eliminar(id, function (err, resultado) {
         if (!err) {
             response.status(200);
@@ -136,14 +141,32 @@ app.delete("/eliminarCurso/:id", function (request, response) {
     });
 });
 
-app.put("/insertarImagen/:id", function (request, response){
+app.put("/insertarImagen/:id",upload.single("imagen"), function (request, response){
    var id = request.params.id;
+   var img= request.file;
+   var urlFichero = null; // URL del fichero dentro del servidor
+
+                if (!fs.existsSync("./public/img/")) {
+                    fs.mkdirSync("./public/img/");
+                }
+                if (!fs.existsSync("./public/img/cursos/")) {
+                    fs.mkdirSync("./public/img/cursos/");
+                }
+                urlFichero = "img/cursos/" + URL;
+                // Nombre del fichero destino
+                var fichDestino = path.join("public", urlFichero);
+                // Realizamos la copia
+                fs.createReadStream(URL)
+                        .pipe(fs.createWriteStream(fichDestino));
+            
    
-   curso.anadirFoto(id, "FOTO", function (err, resultado){
-       if(!err){
-           
-       } else{
-           
-       }
+   curso.anadirFoto(id, fichDestino, function (err, resultado){
+        if (!err) {
+            response.status(200);
+            response.json(resultado);
+        } else {
+            response.status(500);
+            response.end();
+        }
    });
 });
