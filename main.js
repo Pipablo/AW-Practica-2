@@ -135,3 +135,15 @@ app.delete("/eliminarCurso/:id", function (request, response) {
         }
     });
 });
+
+app.put("/insertarImagen/:id", function (request, response){
+   var id = request.params.id;
+   
+   curso.anadirFoto(id, "FOTO", function (err, resultado){
+       if(!err){
+           
+       } else{
+           
+       }
+   });
+});
