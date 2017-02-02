@@ -18,6 +18,7 @@ $(document).ready(function () {
                 $("#infoCursoFecha_inicio").text(data.fecha_inicio);
                 $("#infoCursoFecha_fin").text(data.fecha_fin);
                 $("#infoCursoPlazas").text(data.plazas_disponibles);
+                $("#infoCursoHorario").text(data.horario);
 
                 curso = data;
             },

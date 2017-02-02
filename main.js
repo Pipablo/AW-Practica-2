@@ -58,10 +58,25 @@ app.get("/buscarCurso", function (request, response) {
 app.get("/leerCurso", function (request, response) {
     var id = request.query.id;
 
-    curso.leer.leerDatosCurso(id, function (err, curso) {
+    curso.leer.leerDatosCurso(id, function (err, cursoLeido) {
         if (!err) {
-            response.status(200);
-            response.json(curso[0]);
+            curso.leer.leerHorario(id, function (err, horarios) {
+                if (!err) {
+                    var horario = "";
+                    for(x = 0; x < horarios.length; x++){
+                        horario = horario + horarios[x].dia + " " + horarios[x].hora_inicio + " - " + horarios[x].hora_fin + " ";
+                        if(x !== horarios.length - 1){
+                            horario = horario + "  ";
+                        }
+                    }
+                    cursoLeido[0].horario = horario;
+                    response.status(200);
+                    response.json(cursoLeido[0]);
+                } else {
+                    response.status(400);
+                    response.end();
+                }
+            });
         } else {
             response.status(400);
             response.end();
@@ -90,17 +105,17 @@ app.put("/modificarCurso/:id", function (request, response) {
     });
 });
 
-app.put("/insertarHorario/:id", function (request, response){
+app.put("/insertarHorario/:id", function (request, response) {
     var id = request.params.id;
     var dia = request.body.dia;
     var hora_inicio = request.body.hora_inicio;
     var hora_fin = request.body.hora_fin;
-    
-    curso.anadirHorario(id, dia, hora_inicio, hora_fin, function(err, resultado){
-        if(!err){
+
+    curso.anadirHorario(id, dia, hora_inicio, hora_fin, function (err, resultado) {
+        if (!err) {
             response.status(200);
             response.json(resultado);
-        } else{
+        } else {
             response.status(500);
             response.end();
         }
@@ -109,12 +124,12 @@ app.put("/insertarHorario/:id", function (request, response){
 
 app.delete("/eliminarCurso/:id", function (request, response) {
     var id = request.params.id;
-    
+
     curso.eliminar(id, function (err, resultado) {
-        if(!err){
+        if (!err) {
             response.status(200);
             response.json(resultado);
-        } else{
+        } else {
             response.status(500);
             response.end();
         }

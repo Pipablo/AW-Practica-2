@@ -1,4 +1,5 @@
 var connection = require("../Conexion");
+var config = require("../../config.js");
 
 module.exports = {
     leerDatosCurso: leerDatosCurso,
@@ -30,7 +31,7 @@ function leerDatosCurso(id, callback) {
     });
 }
 
-function leerHorario(id_curso, titulo, callback) {
+function leerHorario(id_curso, callback) {
     var conexion = connection.getConexion();
     if (callback === undefined) {
         callback = function () {};
@@ -38,13 +39,28 @@ function leerHorario(id_curso, titulo, callback) {
 
     conexion.connect(function (err) {
         if (!err) {
-            var sql = "select * " +
-                    "from horarios_'" + titulo + "' " +
-                    "where id_curso = '" + id_curso + "';";
-            conexion.query(sql, function (err, resultado) {
+            var nombreTabla = `horarios_` + id_curso;
+            var sql = "SELECT * " +
+                    "FROM information_schema.tables " +
+                    "WHERE table_schema = ? " +
+                    "AND table_name = ? " +
+                    "LIMIT 1;";
+            conexion.query(sql, [config.dbName, nombreTabla], function (err, resultado) {
                 if (!err) {
-                    callback(null, resultado);
-                } else {
+                    if (resultado.length !== 0) {
+                        var sql = "select dia, hora_inicio, hora_fin " +
+                                "from horarios_" + id_curso;
+                        conexion.query(sql, [id_curso], function (err, resultado) {
+                            if (!err) {
+                                callback(null, resultado);
+                            } else {
+                                callback(err);
+                            }
+                        });
+                    } else {
+                        callback(null, []);
+                    }
+                } else{
                     callback(err);
                 }
             });

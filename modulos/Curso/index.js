@@ -6,5 +6,6 @@ module.exports = {
     editar: require("./editar"),
     eliminar: require("./eliminar"),
     leer: require("./leer"),
-    anadirHorario: require("./anadirHorario")
+    anadirHorario: require("./anadirHorario"),
+    modificarFoto: require("./modificarFoto")
 };

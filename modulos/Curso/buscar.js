@@ -24,7 +24,7 @@ function buscar(busqueda, num, pos, callback) {
                     conexion.query(sql, [busqueda], function (err, tamano) {
                         if (!err) {
                             var tam = tamano[0].tam;
-                            buscar[0].tamano=tam;
+                            buscar[0].tamano = tam;
                             callback(null, buscar);
                         } else {
                             callback(err);

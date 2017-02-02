@@ -71,7 +71,11 @@ $(document).ready(function () {
         page.addClass('visible');
     }
     
-    function renderClaseañadida() { 
+    function renderClaseañadida() {
+        var page = $('.mensaje');
+        page.removeClass('escondido');
+        page.addClass('visible');
+        
         $('.contenido .pagina').removeClass('visible');
         $('.contenido .pagina').addClass('escondido');
     }
