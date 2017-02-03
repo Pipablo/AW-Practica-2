@@ -18,7 +18,18 @@ $(document).ready(function () {
                 $("#infoCursoFecha_inicio").text(data.fecha_inicio);
                 $("#infoCursoFecha_fin").text(data.fecha_fin);
                 $("#infoCursoPlazas").text(data.plazas_disponibles);
-                $("#infoCursoHorario").text(data.horario);
+                $("#infoCursoHorario p").remove();
+                data.horario.forEach(function(hora){
+                    var horaAux = hora.dia + "  " + hora.hora_inicio + "  " + hora.hora_fin
+                    $("#infoCursoHorario").append(
+                            $("<p>").text(horaAux));
+                });
+                if(data.imagen !== null){
+                $("#infoCursoImg").attr("src", data.imagen);
+            }
+            else{
+                $("#infoCursoImg").removeAttr("src");
+            }
 
                 curso = data;
             },
@@ -43,6 +54,11 @@ $(document).ready(function () {
         $("#Modlocalidad").val(curso.localidad);
         $("#Moddireccion").val(curso.direccion);
         $("#Modplazas").val(curso.plazas_disponibles);
+    });
+    $("#imagen").click(function () {
+        $('#infoCurso').modal('toggle');
+        renderImagenCurso();
+        $("#ImgID").val(curso.id);
     });
 
     $("#eliminar").click(function () {
@@ -87,6 +103,13 @@ $(document).ready(function () {
         $('.contenido .pagina').removeClass('visible');
         $('.contenido .pagina').addClass('escondido');
         var page = $('.anadirClase');
+        page.removeClass('escondido');
+        page.addClass('visible');
+    }
+    function renderImagenCurso() {
+        $('.contenido .pagina').removeClass('visible');
+        $('.contenido .pagina').addClass('escondido');
+        var page = $('.ImagenCurso');
         page.removeClass('escondido');
         page.addClass('visible');
     }

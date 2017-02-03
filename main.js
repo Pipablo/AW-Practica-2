@@ -5,7 +5,7 @@ var bodyParser = require("body-parser");
 var path = require("path");
 var fs = require("fs");
 var multer = require("multer");
-var upload = multer({ storage: multer.memoryStorage() });
+var multerFactory = multer({dest: "uploads/"});
 
 
 var ficherosEstaticos = path.join(__dirname, "public");
@@ -66,14 +66,8 @@ app.get("/leerCurso", function (request, response) {
         if (!err) {
             curso.leer.leerHorario(id, function (err, horarios) {
                 if (!err) {
-                    var horario = "";
-                    for(x = 0; x < horarios.length; x++){
-                        horario = horario + horarios[x].dia + " " + horarios[x].hora_inicio + " - " + horarios[x].hora_fin + " ";
-                        if(x !== horarios.length - 1){
-                            horario = horario + "  ";
-                        }
-                    }
-                    cursoLeido[0].horario = horario;
+                    
+                    cursoLeido[0].horario = horarios;
                     response.status(200);
                     response.json(cursoLeido[0]);
                 } else {
@@ -141,32 +135,39 @@ app.delete("/eliminarCurso/:id", function (request, response) {
     });
 });
 
-app.put("/insertarImagen/:id",upload.single("imagen"), function (request, response){
+app.put("/insertarImagen/:id", multerFactory.single("imagen"),function (request, response){
    var id = request.params.id;
-   var img= request.file;
+   var img=  request.file;
    var urlFichero = null; // URL del fichero dentro del servidor
-
+   if(img){
                 if (!fs.existsSync("./public/img/")) {
                     fs.mkdirSync("./public/img/");
                 }
                 if (!fs.existsSync("./public/img/cursos/")) {
                     fs.mkdirSync("./public/img/cursos/");
                 }
-                urlFichero = "img/cursos/" + URL;
+                urlFichero = "img/cursos/" + img.filename;
                 // Nombre del fichero destino
                 var fichDestino = path.join("public", urlFichero);
                 // Realizamos la copia
-                fs.createReadStream(URL)
+                fs.createReadStream(img.path)
                         .pipe(fs.createWriteStream(fichDestino));
             
    
-   curso.anadirFoto(id, fichDestino, function (err, resultado){
+   curso.modificarFoto(id, urlFichero, function (err, resultado){
         if (!err) {
             response.status(200);
-            response.json(resultado);
+            response.end();
+            
         } else {
             response.status(500);
             response.end();
         }
    });
+   }
+   else{
+       response.status(200);
+       response.end();
+            
+   }
 });

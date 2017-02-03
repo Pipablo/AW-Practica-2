@@ -40,33 +40,6 @@ $(document).ready(function () {
             }
 
         });
-         
-       if($("#imagenCurso").val() !== undefined){
-
-  
-  var myFormData = new FormData($("#formularioCreacion")[0]);
-
-
-        $.ajax({
-            type: 'PUT',
-            processData: false,
-            contentType: false,
-            data: myFormData,
-            
-
-            url: "/insertarImagen/" + id ,
-
-            success: function (data, textStatus, jqXHR) {
-                
-                $("#mensaje").text("Imagen añadida con éxito");
-            },
-
-            error: function (jqXHR, textStatus, errorThrown) {
-                renderMensajeError();
-                $("#mensajeError").text("Se ha producido un error: " + errorThrown);
-            }
-        });
-    }
     });
     
     function renderMensaje() {

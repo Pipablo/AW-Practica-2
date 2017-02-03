@@ -1,22 +1,26 @@
 $(document).ready(function () {
-    $("#BotonAnadirImagen").click(function () {
-        var id = $("#AnadirID").val();
-
-        var imagen = JSON.stringify({
-            
-        });
+    $("#formImg").on("submit",function (event) {
+        event.preventDefault();
+        var id = $("#ImgID").val();
+        var aux = $(this);
+        var formData = new FormData();
+        
+        
+        formData.append("imagen", aux[0][1].files[0],"imagen");
+        
 
         $.ajax({
             type: 'PUT',
-            dataType: 'json',
-            contentType: 'application/json',
 
-            data: imagen,
+            data: formData,
 
             url: "/insertarImagen/" + id,
+            cache: false,
+            contentType: false,
+	    processData: false,
 
             success: function (data, textStatus, jqXHR) {
-                renderImagenAnadida();
+                renderMensaje();
                 $("#mensaje").text("Imagen añadida con éxito");
             },
 
@@ -27,13 +31,12 @@ $(document).ready(function () {
         });
     });
 
-    function renderImagenAnadida() {
+    function renderMensaje() {
+        $('.contenido .pagina').removeClass('visible');
+        $('.contenido .pagina').addClass('escondido');
         var page = $('.mensaje');
         page.removeClass('escondido');
         page.addClass('visible');
-
-        $('.contenido .pagina').removeClass('visible');
-        $('.contenido .pagina').addClass('escondido');
     }
 
     function renderMensajeError() {

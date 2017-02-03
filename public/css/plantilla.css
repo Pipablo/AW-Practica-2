@@ -17,7 +17,7 @@
 .list-group-item {
     float: left;
 }
-.identificarse{
+.flotaDer{
     float: right;
 }
 .mensaje{
@@ -54,6 +54,10 @@
 }
 .link{
     cursor:pointer;
+}
+.TamanoImagen{
+	margin-bottom: 5px;
+	height: 100px;
 }
 
 

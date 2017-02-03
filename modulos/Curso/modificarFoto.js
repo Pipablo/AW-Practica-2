@@ -11,9 +11,9 @@ function modificarFoto(id, imagen, callback) {
     conexion.connect(function (err) {
         if (!err) {
             var sql = "update curso " +
-                    "set imagen = " + imagen +
-                    "where id = " + id;
-            conexion.query(sql, function (err, resultado) {
+                    "set imagen = ? "+
+                    " where id = ? ";
+            conexion.query(sql, [imagen, id], function (err, resultado) {
                 if (!err) {
                     callback(null, resultado);
                 } else {

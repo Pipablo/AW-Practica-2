@@ -12,6 +12,7 @@
         <script src="JQuery/leerCurso.js"></script>
         <script src="JQuery/modificarCurso.js"></script>
         <script src="JQuery/anadirClase.js"></script>
+        <script src="JQuery/anadirFoto.js"></script>
 
         <!-- CSS -->
         <link rel="stylesheet" href="css/plantilla.css"/>
@@ -31,7 +32,7 @@
                 <li class="list-group-item link" id="cc">Crear Curso</li>
                 <li class="list-group-item link" id="bc">Buscar Cursos</li>
             </ul>
-            <button type="button" class="btn btn-primary identificarse link">Identificarse</button>
+            <button type="button" class="btn btn-primary flotaDer link">Identificarse</button>
         </div>
 
         <div class="contenido">
@@ -53,6 +54,11 @@
                             <h4 class="modal-title" id="infoCursoTitulo"></h4>
                         </div>
                         <div class="modal-body">
+                            <div class ="flotaDer">
+                                <img class="TamanoImagen" id="infoCursoImg">
+                                <br>
+                                <div class="btn btn-primary link" id="imagen">Añadir Imagen</div>
+                            </div>
                             <h5 class="modal-title">ID:</h5>
                             <p id="infoCursoID"></p>
                             <h5 class="modal-title">Descripcion:</h5>
@@ -68,7 +74,7 @@
                             <h5 class="modal-title">Plazas disponibles</h5>
                             <p id="infoCursoPlazas"></p>
                             <h5 class="modal-title">Horario</h5>
-                            <p id="infoCursoHorario"></p>
+                            <div id="infoCursoHorario"></div>
 
                         </div>
                         <div class="modal-footer">
@@ -77,6 +83,8 @@
                             <div class="btn btn-primary link" id="modificar">Modificar</div>
                             
                             <div class="btn btn-primary link" id="clase">Añadir clase</div>
+                            
+                            
 
                             <button type="button" class="btn btn-default link" data-dismiss="modal">Cerrar</button>
 
@@ -122,7 +130,7 @@
 
             <div class="pagina creacionCurso escondido">
                 <h1>Creación de un curso</h1>
-                <form class="form-horizontal" enctype="multipart/form-data" id="formularioCreacion">
+                <form class="form-horizontal" id="formularioCreacion">
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="titulo">Titulo:</label>
                         <div class="col-sm-5">
@@ -219,16 +227,7 @@
                             <input type="number" class="form-control" id="plazas">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2">Imagen:</label>
-                        <div class="col-sm-5">
-                            <label class="btn btn-default" for="imagenCurso">
-                            <input type="file" name="imagenCurso" class="form-control" id="imagenCurso" style="display:none;" onchange="$('#upload').html($(this).val());" > Examinar
-                            </label>
-                            <span class='label label-info' id="upload"></span>
-                        </div>
-                        
-                    </div>
+                   
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="btn btn-primary link" id="crearCurso">Enviar</div>
@@ -353,6 +352,7 @@
             <div class="pagina anadirClase escondido">
                 <h1>Añadir clase al curso</h1>
                 <form class="form-horizontal">
+                    
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="AnadirID">ID:</label>
                         <div class="col-sm-5">
@@ -387,6 +387,32 @@
                                 </div>
                             </div>
                     
+                </form>
+            </div>
+            <div class="pagina ImagenCurso escondido">
+                <h1>Añadir Imagen al curso</h1>
+                <form class="form-horizontal" enctype="multipart/form-data" id="formImg" >
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="ImgID">ID:</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="ImgID" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Imagen:</label>
+                        <div class="col-sm-5">
+                            <label class="btn btn-default" for="imagenSubida">
+                            <input name="img" type="file" class="form-control" id="imagenSubida" style="display:none;" onchange="$('#upload').html($(this).val());" > Examinar
+                            </label>
+                            <span class='label label-info' id="upload"></span>
+                        </div>
+                        
+                    </div>
+                      <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary link" id="BotonAnadirImagen">Enviar </button>
+                                    </div>
+                      </div>
                 </form>
             </div>
         </div>
