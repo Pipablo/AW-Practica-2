@@ -17,9 +17,10 @@ function identificar(partida, numeroCambiosTurno, callback) {
                 } else {
                     callback(err);
                 }
+                conexion.end();
             });
         } else {
-
+            callback(err);
         }
     });
 }

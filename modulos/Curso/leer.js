@@ -24,9 +24,10 @@ function leerDatosCurso(id, callback) {
                 } else {
                     callback(err);
                 }
+                conexion.end();
             });
         } else {
-
+            callback(err);
         }
     });
 }
@@ -56,16 +57,17 @@ function leerHorario(id_curso, callback) {
                             } else {
                                 callback(err);
                             }
+                            conexion.end();
                         });
                     } else {
                         callback(null, []);
                     }
-                } else{
+                } else {
                     callback(err);
                 }
             });
         } else {
-
+            callback();
         }
     });
 }
@@ -85,9 +87,10 @@ function leerPlazasRestantes(callback) {
                 } else {
                     callback(err);
                 }
+                conexion.end();
             });
         } else {
-
+            callback(err);
         }
     });
 }

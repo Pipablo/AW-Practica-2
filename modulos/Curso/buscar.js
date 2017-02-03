@@ -29,6 +29,7 @@ function buscar(busqueda, num, pos, callback) {
                         } else {
                             callback(err);
                         }
+                        conexion.end();
                     });
                 } else {
                     callback(err);

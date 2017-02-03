@@ -19,9 +19,10 @@ function crear(nombre, apellidos, correo, contraseña, sexo, fecha_nacimiento, c
                 } else {
                     callback(err);
                 }
+                conexion.end();
             });
         } else {
-
+            callback(err);
         }
     });
 }
