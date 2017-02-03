@@ -6,6 +6,10 @@ var path = require("path");
 var fs = require("fs");
 var multer = require("multer");
 var multerFactory = multer({dest: "uploads/"});
+var https = require("https");
+var clavePrivada = fs.readFileSync("./" + config.private_key);
+var certificado = fs.readFileSync("./" + config.certificate);
+
 
 
 var ficherosEstaticos = path.join(__dirname, "public");
@@ -17,9 +21,13 @@ app.set("views", path.join(__dirname, "views"));
 
 var curso = require("./modulos/Curso");
 
-app.listen(config.port, function () {
+var servidor = https.createServer(
+ { key: clavePrivada, cert: certificado }, app );
+ 
+ servidor.listen(config.port, function () {
     console.log("Servidor iniciado en el puerto " + config.port);
 });
+
 app.get("/", function (request, response) {
     response.redirect("index.html");
 });
