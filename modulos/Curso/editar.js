@@ -18,6 +18,7 @@ function editar(id, titulo, descripcion, fecha_inicio, fecha_fin, localidad, dir
                 } else {
                     callback(err);
                 }
+                conexion.end();
             });
         } else {
 

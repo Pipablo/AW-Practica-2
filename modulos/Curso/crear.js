@@ -20,6 +20,7 @@ function crear(titulo, descripcion, fecha_inicio, fecha_fin, localidad, direccio
                 } else {
                     callback(err);
                 }
+                conexion.end();
             });
 
         }

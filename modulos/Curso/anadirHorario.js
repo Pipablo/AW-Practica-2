@@ -35,6 +35,7 @@ function anadirHorario(id, dia, hora_inicio, hora_fin, callback) {
                                     } else {
                                         callback(err);
                                     }
+                                    conexion.end();
                                 });
                             } else {
                                 callback(err);

@@ -19,9 +19,10 @@ function modificarFoto(id, imagen, callback) {
                 } else {
                     callback(err);
                 }
+                conexion.end();
             });
-        } else {
-
+        } else {   
+            callback(err);
         }
     });
 }

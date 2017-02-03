@@ -17,9 +17,10 @@ function eliminar(id, callback) {
                 } else {
                     callback(err);
                 }
+                conexion.end();
             });
         } else {
-
+            callback(err);
         }
     });
 }

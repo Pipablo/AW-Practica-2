@@ -18,9 +18,10 @@ function leer(id_usuario, callback) {
                 } else {
                     callback(err);
                 }
+                conexion.end();
             });
         } else {
-
+            callback(err);
         }
     });
 }
